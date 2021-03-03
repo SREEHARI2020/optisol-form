@@ -3,6 +3,7 @@ import './App.css';
 import React, { Component } from 'react';
 import SignIn from './components/SignIn';
 import View from './components/View';
+import Signup from './components/Signup';
 
 class App extends Component {
   
@@ -14,6 +15,7 @@ class App extends Component {
 
       <Switch>
       <Route exact path="/" ><SignIn/></Route>
+      <Route exact path="/signup" ><Signup/></Route>
       <Route exact path="/view" ><View/></Route>
      
 

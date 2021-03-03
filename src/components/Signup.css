@@ -13,11 +13,11 @@ button {
 .Forms-user-error {
   color: red;
 }
-.Forms-container-signin-link {
+.Forms-container-admin-link {
   text-decoration: underline;
-
+  font-size: 20px;
   font-weight: bolder;
-  color: black;
+  color: #fff;
   display: flex;
 
   align-items: center;

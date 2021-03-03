@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { Button, TextField, Typography } from '@material-ui/core'
-import './SignIn.css';
-import {withRouter,Link} from 'react-router-dom';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import './Signup.css';
+import {withRouter} from 'react-router-dom';
 
-class SignIn extends Component {
+class Signup extends Component {
     constructor(props) {
         super(props)
       
         this.state = {
            email:"",
-           password:"",
+           password1:"",
+           password2:"",
            error:{}
         }
         
@@ -24,8 +24,9 @@ class SignIn extends Component {
       validate=()=>{
         let valid={}
         valid.email=this.state.email.length>=6 && this.state.email.length<20? "":" email should be between 6 to  20 characters"
-        valid.password=this.state.password.length>=5 && this.state.password.length<10? "":" password should be between 5 to 10 characters"
-        
+        valid.password1=this.state.password1.length>=5 && this.state.password1.length<10? "":" password should be between 5 to 10 characters"
+        valid.password2=this.state.password2.length>=5 && this.state.password2.length<10? "":" password should be between 5 to 10 characters"
+        valid.samepass=this.state.password1===this.state.password2?"":"passwords doesn't match"
         return valid;
     }
 
@@ -35,8 +36,8 @@ class SignIn extends Component {
         this.setState({error:obj})
 
        
-        if(this.state.error.email==="" && this.state.error.password===""){
-           this.props.history.push('/view')
+        if(this.state.error.email==="" && this.state.error.password==="" &&this.state.error.samepass===""){
+            this.props.history.push('/')
         }
       }
 
@@ -46,7 +47,7 @@ class SignIn extends Component {
 
                 
          <Typography component="h1" variant="h5">
-          Sign in
+          Sign up here
         </Typography>
         <form >
         {this.state.error?<div className="Forms-user-error">{this.state.error.email}</div>:""}  
@@ -55,7 +56,7 @@ class SignIn extends Component {
             margin="normal"
             required
             fullWidth
-            id="email"
+            id="email" 
             label="Email Address"
             name="email"
            onChange={(e)=>this.HandleChange(e)}
@@ -66,18 +67,36 @@ class SignIn extends Component {
            
           
           />
-         {this.state.error?<div className="Forms-user-error">{this.state.error.password}</div>:""} 
+             {this.state.error?<div className="Forms-user-error">{this.state.error.samepass}</div>:""} 
+         {this.state.error?<div className="Forms-user-error">{this.state.error.password1}</div>:""} 
+        
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            name="password"
+            name="password1"
             label="Password"
             type="password"
             id="password"
             onChange={(e)=>this.HandleChange(e)}
-             value={this.state.password}
+             value={this.state.password1}
+            autoComplete="current-password"
+        
+         
+          />
+         {this.state.error?<div className="Forms-user-error">{this.state.error.password2}</div>:""} 
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="password2"
+            label="Password"
+            type="password"
+            id="password"
+            onChange={(e)=>this.HandleChange(e)}
+             value={this.state.password2}
             autoComplete="current-password"
         
          
@@ -92,17 +111,9 @@ class SignIn extends Component {
           >
             Sign In
           </Button> </form>
-
-           
-          <Link to="/signup">  
-          <div className="Forms-container-signin-link">  
-         <div>New here? go sign up </div> 
-         < ArrowForwardIcon/>
-        </div>  </Link>
-
         </div>
         );
     }
 }
 
-export default withRouter(SignIn);
+export default withRouter(Signup);
