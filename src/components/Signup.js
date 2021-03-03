@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Button, TextField, Typography } from '@material-ui/core'
 import './Signup.css';
-import {withRouter} from 'react-router-dom';
+import {withRouter,Link} from 'react-router-dom';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+
 
 class Signup extends Component {
     constructor(props) {
@@ -109,8 +111,14 @@ class Signup extends Component {
             color="primary"
             
           >
-            Sign In
+            Sign up
           </Button> </form>
+
+          <Link to="/">  
+          <div className="Forms-container-signup-link">  
+         < ArrowBackIcon/>
+         <div>Go back to Sign in page</div> 
+        </div>  </Link>
         </div>
         );
     }
