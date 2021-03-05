@@ -39,6 +39,7 @@ class Signup extends Component {
 
        
         if(this.state.error.email==="" && this.state.error.password==="" &&this.state.error.samepass===""){
+            console.log("all-good")
             this.props.history.push('/')
         }
       }
