@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-import CameraComponent from './CameraComponent';
+import CameraClass from './CameraClass';
+
+
 import './View.css'
+
 
 class View extends Component {
     render() {
         return (
             <div className="view-container">
-             <CameraComponent/>
+            
+             <CameraClass/>
+            
             </div>
         );
     }
